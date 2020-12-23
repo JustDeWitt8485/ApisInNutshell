@@ -9,7 +9,25 @@ class Manufacturer(models.Model):
 
 
 class ShoeType(models.Model):
-    style = models.CharField(max_length=50)
+    SNEAKER = 'S'
+    BOOT = 'B'
+    SANDAL = 'SA'
+    DRESS = 'D'
+    OTHER = 'O'
+
+    SHOE_CHOICES = [
+        (SNEAKER, 'Sneaker'),
+        (BOOT, 'Boot'),
+        (SANDAL, 'Sandal'),
+        (DRESS, 'Dress'),
+        (OTHER, 'Other')
+    ]
+
+    style = models.CharField(
+        max_length=2,
+        choices=SHOE_CHOICES,
+        default=SNEAKER
+    )
 
 
 class ShoeColor(models.Model):
